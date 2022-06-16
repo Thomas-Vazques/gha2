@@ -19,8 +19,8 @@ jobs:
         run: npm install -g bats
       - name: run bats version
         run: bats -v
-      - name: validación de archivos YAML utilizando un esquema JSON remoto
-        uses: mpoc/nexus-validate-using-remote-schema-action@v1
-        with:
-          api-endpoint: 'https://onlineyamltools.com/convert-yaml-to-json'
-          yaml-file: my_workflow.yaml
+      - name: Setup yq environment #Configurar entorno yq
+        uses: shiipou/setup-yq-action@v2.0.2
+      - name: get version
+        run: |
+          VERSION=$(${{ steps.setup-yq.outputs.yq-binary }} '.dependency.my_component.git.ref' pubspec.yaml)
