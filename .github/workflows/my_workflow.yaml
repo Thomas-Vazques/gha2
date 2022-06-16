@@ -15,5 +15,7 @@ jobs:
         uses: actions/setup-node@v3.3.0
         with:
           node-version: 14
-      - run: npm ci
-      - run: npm test
+      - name: install bats
+        run: npm install -g bats
+      - name: run bats version
+        run: bats -v
