@@ -21,6 +21,3 @@ jobs:
         run: bats -v
       - name: Setup yq environment #Configurar entorno yq
         uses: shiipou/setup-yq-action@v2.0.2
-      - name: get version
-        run: |
-          VERSION=$(${{ steps.setup-yq.outputs.yq-binary }} '.dependency.my_component.git.ref' pubspec.yaml)
